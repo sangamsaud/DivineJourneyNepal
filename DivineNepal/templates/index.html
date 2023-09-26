@@ -1,0 +1,200 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+
+
+<div class="container-fluid bg-primary py-5 mb-5 hero-header">
+    <div class="container py-5">
+        <div class="row justify-content-center py-5">
+            <div class="col-lg-10 pt-lg-5 mt-lg-5 text-center">
+                <h1 class="display-3 text-white mb-3 animated slideInDown"> Explore Hinduism Explore Nepal </h1>
+                <p class="fs-4 text-white mb-4 animated slideInDown">Get the best sprituality experence for lifetime</p>
+                <a class="btn btn-primary py-3 px-5 mt-2" href="booking">Book Now</a>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- About Start -->
+<div class="container-xxl py-5">
+    {% for ab in abouts %}
+    <div class="container">
+        <div class="row g-5">
+            <div class="col-lg-6 wow fadeInUp" data-wow-delay="0.1s" style="height: 400px;">
+                <div class="position-relative h-100">
+                    <img class="img-fluid position-absolute" src="{{ ab.image.url }}" alt="" style="object-fit: cover; width: 100%; height: 100%;">
+                </div>
+            </div>
+            <div class="col-lg-6 wow fadeInUp" data-wow-delay="0.3s" style="height: 400px;">
+                <h6 class="section-title bg-white text-start text-primary pe-3">About Us</h6>
+                <h1 class="mb-4">{{ ab.title }}</h1>
+                <div>
+                    <p class="mb-4">{{ ab.description_1 }}</p>
+                </div>
+                <p class="mb-4">{{ ab.description_2 }}</p>
+                <a class="btn btn-primary py-3 px-5 mt-2" href="about">Read More</a>
+            </div>
+        </div>
+    </div>
+    {% endfor %}
+</div>
+<br><br>
+<!-- About End -->
+
+
+
+
+
+    <!-- Service Start -->
+    <div class="container-xxl py-5">
+        <div class="container">
+            <div class="text-center wow fadeInUp" data-wow-delay="0.1s">
+                <h6 class="section-title bg-white text-center text-primary px-3">Services</h6>
+                <h1 class="mb-5">Our Services</h1>
+            </div>
+            <div class="row g-4">
+                {% for serv in service %}
+                <div class="col-lg-3 col-sm-6 wow fadeInUp" data-wow-delay="0.1s">
+                    <div class="service-item rounded pt-3">
+                        <div class="p-4">
+                            <i class="fa fa-3x {{serv.icon}} text-primary mb-4"></i>
+                            <h5>{{serv.title}}</h5>
+                            <p>{{serv.description}}</p>
+                        </div>
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+    <!-- Service End -->
+
+
+<!-- Destination Start -->
+<div class="container-xxl py-5 destination">
+    <div class="container">
+        <div class="text-center wow fadeInUp" data-wow-delay="0.1s">
+            <h6 class="section-title bg-white text-center text-primary px-3">Destination</h6>
+            <h1 class="mb-5">Popular Destination</h1>
+        </div>
+        <div class="row g-3">
+            {% for dest in destination %}
+            <div class="col-lg-3 col-md-4 col-sm-6 wow zoomIn" data-wow-delay="0.1s">
+                <a class="position-relative d-block overflow-hidden" href="">
+                    <img class="img-fluid" src="{{ dest.image.url }}" alt="">
+                    <div class="bg-white text-danger fw-bold position-absolute top-0 start-0 m-3 py-1 px-2">{{ dest.title }}</div>
+                    <div>
+                        <p>{{ dest.description_1}}</p>
+                    </div>
+                        <p>{{ dest.description_2}}</p>
+                </a>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+</div>
+<!-- Destination Start -->
+
+
+
+
+    <!-- Package Start -->
+<div class="container-xxl py-5">
+    <div class="container">
+        <div class="text-center wow fadeInUp" data-wow-delay="0.1s">
+            <h6 class="section-title bg-white text-center text-primary px-3">Packages</h6>
+            <h1 class="mb-5">Awesome Packages</h1>
+        </div>
+        <div class="row g-4 justify-content-center">
+            {% for pack in package %}
+            <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.1s">
+                <div class="package-item">
+                    <div class="overflow-hidden">
+                        <img class="img-fluid" src="{{ pack.image.url }}" alt="">
+                    </div>
+                    <div class="d-flex border-bottom">
+                        <small class="flex-fill text-center border-end py-2"><i class="fa fa-map-marker-alt text-primary me-2"></i>{{ pack.place }}</small>
+                        <small class="flex-fill text-center border-end py-2"><i class="fa fa-calendar-alt text-primary me-2"></i>{{ pack.time }}</small>
+                        <small class="flex-fill text-center py-2"><i class="fa fa-user text-primary me-2"></i>{{ pack.person }}</small>
+                    </div>
+                    <div class="text-center p-4">
+                        <h3 class="mb-0">{{ pack.amount }}</h3>
+                        <div class="mb-3">
+                            <small class="fa fa-star text-primary"></small>
+                            <small class="fa fa-star text-primary"></small>
+                            <small class="fa fa-star text-primary"></small>
+                            <small class="fa fa-star text-primary"></small>
+                            <small class="fa fa-star text-primary"></small>
+                        </div>
+                        <p>{{ pack.detail }}</p>
+                        <div class="d-flex justify-content-center mb-2">
+                            <a href="about" class="btn btn-sm btn-primary px-3 border-end" style="border-radius: 30px 0 0 30px;">Read More</a>
+                            <a href="booking" class="btn btn-sm btn-primary px-3" style="border-radius: 0 30px 30px 0;">Book Now</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            {% if forloop.counter|divisibleby:3 and not forloop.last %}
+        </div>
+        <div class="row g-4 justify-content-center">
+            {% endif %}
+            {% endfor %}
+        </div>
+    </div>
+</div>
+<!-- Package End -->
+
+    <!-- Team Start -->
+    <div class="container-xxl py-5">
+        <div class="container">
+            <div class="text-center wow fadeInUp" data-wow-delay="0.1s">
+                <h6 class="section-title bg-white text-center text-primary px-3">Travel Guide</h6>
+                <h1 class="mb-5">Meet Our Guide</h1>
+            </div>
+            <div class="row g-4">
+                {% for team in teams %}
+                <div class="col-lg-3 col-md-6 wow fadeInUp" data-wow-delay="0.1s">
+                    <div class="team-item">
+                        <div class="overflow-hidden">
+                            <img class="img-fluid" src="{{team.image.url}}" alt="">
+                        </div>
+                        <div class="position-relative d-flex justify-content-center" style="margin-top: -19px;">
+                            <a class="btn btn-square mx-1" href="https://www.facebook.com/sangam.saud.33"><i class="fab fa-facebook-f"></i></a>
+                            <a class="btn btn-square mx-1" href="https://twitter.com/sangamsaud27"><i class="fab fa-twitter"></i></a>
+                            <a class="btn btn-square mx-1" href="https://www.instagram.com/sangamsaud27"><i class="fab fa-instagram"></i></a>
+                        </div>
+                        <div class="text-center p-4">
+                            <h5 class="mb-0">{{team.name}}</h5>
+                            <small>{{team.designation}}</small>
+                        </div>
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+    </div>
+    <!-- Team End -->
+
+
+    <!-- Testimonial Start -->
+    <div class="container-xxl py-5 wow fadeInUp" data-wow-delay="0.1s">
+        <div class="container">
+            <div class="text-center">
+                <h6 class="section-title bg-white text-center text-primary px-3">Testimonial</h6>
+                <h1 class="mb-5">Our Clients Say!!!</h1>
+            </div>
+            <div class="owl-carousel testimonial-carousel position-relative">
+                {% for rev in review %}
+                <div class="testimonial-item bg-white text-center border p-4">
+                    <img class="bg-white rounded-circle shadow p-1 mx-auto mb-3" src="{{rev.image.url}}" style="width: 80px; height: 80px;">
+                    <h5 class="mb-0">{{rev.name}}</h5>
+                    <p>{{rev.address}}</p>
+                    <p class="mb-0">{{rev.description}}</p>
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+    <!-- Testimonial End -->
+        
+
+  {% endblock %}
